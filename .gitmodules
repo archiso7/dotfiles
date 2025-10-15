@@ -1,6 +1,6 @@
 [submodule "nvim"]
 	path = nvim
-	url = https://github.com/archiso/nvim
+	url = https://github.com/archiso7/nvim
 [submodule "zsh/fast-syntax-highlighting"]
 	path = zsh/fast-syntax-highlighting
 	url = https://github.com/zdharma-continuum/fast-syntax-highlighting

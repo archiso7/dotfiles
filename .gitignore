@@ -1,0 +1,21 @@
+# Ignore everything by default
+*
+
+# But track these specific directories and their contents
+!/.gitignore
+!/tmux/
+!/tmux/**
+!/tmux-sessionizer/
+!/tmux-sessionizer/**
+!/hypr/
+!/hypr/**
+!/kitty/
+!/kitty/**
+!/nvim/
+!/nvim/**
+!/waybar/
+!/waybar/**
+!/wofi/
+!/wofi/**
+!/zsh/
+!/zsh/**

@@ -1,0 +1,57 @@
+@define-color green #A7C080;
+@define-color background #272E33;
+@define-color green2 #3C4841;
+@define-color background-dim #1E2326;
+
+#window {
+    background-color: rgba(39, 46, 51,0.9);
+    border-radius: 25px; /* Adjust this value for more/less rounded corners */
+    padding: 10px;
+    /*overflow: hidden; /* Ensures the rounded corners cut off content */
+}
+
+#scroll {
+    overflow: hidden;
+    border-radius: 25px;
+    padding: 0px 50px 10px 50px;
+}
+
+
+#input {
+    background-color: @background-dim;
+    border-radius: 20px;
+    margin: 10px;
+    color: @green; 
+}
+
+#input image {
+    margin-right: 5px;
+}
+
+#input:focus {
+    border: 1px solid @green2;
+}
+
+#entry {
+    color: @green;
+    padding: 5px 10px;
+    margin: 0px;
+    border-radius: 20px; /* Adjust this value for more/less rounded corners */
+    overflow: hidden;
+}
+
+#text {
+    padding-left: 5px;
+}
+
+#text:selected {
+    background-color: @green2;
+    color: #E67E80;
+}
+
+#entry:selected {
+    background-color: @green2;
+}
+
+
+

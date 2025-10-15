@@ -1,0 +1,215 @@
+[{
+    "position": "top",
+    "layer": "top",
+    "name": "top",
+    //"height": 38,
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "modules-left": ["hyprland/workspaces", "memory", "cpu", "hyprland/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["group/spotifyG", "tray", "network", "pulseaudio", "backlight", "battery", "custom/power"],
+    "clock": {
+      "timezone": "CA",
+      "format": " {:%H:%M}",
+      "tooltip": "true",
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+      "format-alt": " {:%d/%m}"
+    },
+    "hyprland/workspaces": {
+    //  "persistent-workspaces": {
+    //    "1": [],
+    //    "2": [],
+    //    "3": [],
+    //    "4": [],
+    //  },
+      "active-only": false,
+      "format": "{icon}{name}",
+      "format-icons": {
+        "urgent": "",
+        "active": "",
+        "default": "",
+      },
+      "sort-by-number": true,
+      "on-click": "activate",
+    },
+    "battery": {
+      "interval": 60,
+      "states": {
+          "warning": 30,
+          "critical": 15,
+      },
+      "format": "{capacity}% {icon}",
+      "format-icons": ["", "", "", "", ""],
+      "max-length": 35,
+    },
+    "memory": {
+      "format": "󰍛 {}%",
+      "format-alt": "󰍛 {used}/{total} GiB",
+      "interval": 5,
+    },
+
+    "cpu": {
+      "format": "󰻠 {usage}%",
+      "format-alt": "󰻠 {avg_frequency} GHz",
+      "interval": 5,
+    },
+    "backlight": {
+      "device": "intel_backlight",
+      "format": "{percent}% {icon}",
+      "format-icons": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+      ],
+      "on-scroll-down": "brightnessctl s 5%-",
+      "on-scroll-up": "brightnessctl s +5%",
+      "smooth-scrolling-threshold": 1,
+    },
+
+    "disk": {
+      "format": "󰋊 {}%",
+      "format-alt": "󰋊 {used}/{total} GiB",
+      "interval": 5,
+      "path": "/dev/nvme0n1p1",
+    },
+    
+    "network": {
+            "format-wifi": "󰤨 {essid}",
+            "format-ethernet": " ",
+            "format-linked": " {ifname} (No IP)",
+            "format-disconnected": "󰤭",
+            "format-alt": " {ifname}: {ipaddr}/{cidr}",
+            "tooltip-format": "{essid}",
+            "on-click": "nm-connection-editor",
+    },
+
+    "tray": {
+      "icon-size": 16,
+      "spacing": 5,
+      "max-length": 10,
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""],
+        },
+        "scroll-step": 1,
+        "on-click": "pavucontrol",
+        "ignored-sinks": ["Easy Effects Sink"],
+    },
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "exec ~/.config/wofi/wofi-power.sh",
+        "tooltip": false,
+    },
+    "custom/spotify": {
+      "format": "{}",
+      "interval": 1,
+      "max-length": 35,
+      "exec": "~/.config/waybar/spotify.sh",
+      "on-click": "playerctl play-pause",
+      "on-scroll-up": "playerctl next",
+      "on-scroll-down": "playerctl previous",
+      "tooltip": "true"
+    },
+    "custom/spotify-prev": {
+      "exec": "echo -e '\u25C4\u25C4'",
+      "format": "{}",
+      "on-click": "playerctl previous",
+      "tooltip-format": "Previous"
+    },
+    "custom/spotify-next": {
+      "exec": "echo -e '\u25BA\u25BA'",
+      "format": "{}",
+      "on-click": "playerctl next",
+      "tooltip-format": "Next"
+    },
+    "group/spotifyG": {
+      "orientation": "horizontal",
+      "modules": ["custom/spotify-prev", "custom/spotify", "custom/spotify-next"]
+    },
+  },
+
+]
+//   {
+//     "height": 10,
+//     "name": "bottom",
+//     "position": "bottom",
+//     "layer": "top",
+//     "margin": "0px 0px 0px 0px",
+//     "exclusive": false,
+//     "modules-center": ["group/bottomBar"],
+//     "group/bottomBar": {
+// 	"orientation": "vertical",
+// 	"drawer": {
+//             "transition-duration": 500,
+//             "children-class": "hidden",
+//             "transition-left-to-right": false,
+//     	},
+// 	"modules": [
+// 	    "custom/hover",
+// 	    "group/launcher",
+// 	]
+//     },
+//     "group/launcher": {
+//     	"orientation": "inherit",
+// 	"modules": [
+// 	    "custom/launcher",
+// 	    "custom/browser",
+// 	    "custom/terminal",
+// 	    "custom/discord",
+// 	    "custom/files",
+// 	]
+//     },
+//     "custom/hover": {
+//       "format": "_________________________________________________________________________________________________________________________________________________________________________________________________________________________________",
+//       "tooltip": false,
+//     },
+//     "custom/browser": {
+//       "format": "",
+//       "on-click": "exec firefox",
+//       "tooltip": "Firefox",
+//     },
+//     "custom/terminal": {
+//         "format": "",
+//         "on-click": "exec kitty",
+//         "tooltip": "Terminal",
+//     },
+//     "custom/files": {
+//         "format": "",
+//         "on-click": "exec nemo",
+//         "tooltip": "Files",
+//     },
+//     "custom/launcher": {
+//         "format":"",
+//         "on-click": "exec wofi --show drun",
+//         "tooltip": "Apps",
+//     },
+//     "custom/discord": {
+//         "format": "󰙯",
+// 	"on-click": "exec discord",
+// 	"tooltip": "Discord",
+//     },
+//   },

@@ -1,4 +1,7 @@
 # Lines configured by zsh-newuser-install
+autoload -Uz compinit
+compinit
+source ~/.config/zsh/fzf-tab/fzf-tab.plugin.zsh
 source ~/.config/zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.config/zsh/everforest-dark.zsh
@@ -15,23 +18,7 @@ bindkey -v
 alias ls='ls --color=auto'
 alias ":q"="exit"
 
-# The following lines were added by compinstall
 
-zstyle ':completion:*' completer _expand _complete
-zstyle ':completion:*' max-errors 3
-zstyle :compinstall filename '/home/archiso/.zshrc'
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
-
-zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
-zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
-zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
-zstyle ':completion:*:*:cp:*' file-sort size
-zstyle ':completion:*' file-sort modification
-zstyle ':completion:*' menu select
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 setopt auto_menu auto_param_keys auto_param_slash auto_remove_slash complete_in_word list_packed menu_complete list_rows_first
 
 export CLICOLOR=1

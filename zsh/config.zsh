@@ -34,12 +34,6 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 setopt auto_menu auto_param_keys auto_param_slash auto_remove_slash complete_in_word list_packed menu_complete list_rows_first
 
-(cat $HOME/.config/wpg/sequences &)
-
-export PATH="$HOME/.local/share/gem/ruby/3.2.0/bin:$PATH"
-
-[ -f "/home/archiso/.ghcup/env" ] && . "/home/archiso/.ghcup/env" # ghcup-env
-
 export CLICOLOR=1
 export LSCOLORS="CxGxDxDxBxegedabagacad"
  
@@ -84,8 +78,6 @@ setopt HIST_SAVE_NO_DUPS
 
 # Created by `pipx` on 2024-11-09 02:11:08
 export PATH="$PATH:/home/archiso/.local/bin"
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 export PATH="$HOME/.local/bin:$PATH"
 
 #tmux-sessionizer

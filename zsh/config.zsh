@@ -6,6 +6,7 @@ source ~/.config/zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zs
 source ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.config/zsh/everforest-dark.zsh
 source ~/.config/zsh/prompt-everforest.zsh
+source ~/.config/zsh/gitc/gitc.zsh
 
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -73,3 +74,7 @@ bindkey -s '\eh' "tmux-sessionizer -s 0\n"
 bindkey -s '\et' "tmux-sessionizer -s 1\n"
 bindkey -s '\en' "tmux-sessionizer -s 2\n"
 bindkey -s '\es' "tmux-sessionizer -s 3\n"
+
+# Load gitc and devt
+source ~/.config/zsh/gitc/gitc.zsh
+source ~/.config/zsh/devt/devt.zsh

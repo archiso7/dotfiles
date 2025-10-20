@@ -10,3 +10,9 @@
 [submodule "zsh/fzf-tab"]
 	path = zsh/fzf-tab
 	url = https://github.com/Aloxaf/fzf-tab
+[submodule "zsh/gitc"]
+	path = zsh/gitc
+	url = https://github.com/archiso7/gitc.git
+[submodule "zsh/devt"]
+	path = zsh/devt
+	url = https://github.com/archiso7/devt.git

@@ -8,6 +8,7 @@ source ~/.config/zsh/everforest-dark.zsh
 source ~/.config/zsh/prompt-everforest.zsh
 source ~/.config/zsh/gitc/gitc.zsh
 
+EDITOR=nvim
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
@@ -75,6 +76,13 @@ bindkey -s '\et' "tmux-sessionizer -s 1\n"
 bindkey -s '\en' "tmux-sessionizer -s 2\n"
 bindkey -s '\es' "tmux-sessionizer -s 3\n"
 
-# Load gitc and devt
+# Load gitc, devt
 source ~/.config/zsh/gitc/gitc.zsh
 source ~/.config/zsh/devt/devt.zsh
+
+# Switch worktree in-place (cd into a sibling worktree)
+wt() {
+  local selected
+  selected=$(git worktree list | fzf --prompt='worktree> ' | awk '{print $1}')
+  [[ -n "$selected" ]] && cd "$selected"
+}

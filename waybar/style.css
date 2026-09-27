@@ -1,138 +1,22 @@
-@define-color foreground #A7C080;
-@define-color background #272E33;
+/* 🏔️ Rivendell — Green glass bar, scholarly */
+@define-color accent #83C092;
+@define-color accent-dim rgba(131, 192, 146, 0.12);
+@define-color bg rgba(21, 26, 30, 0.65);
+@define-color bg-s #151a1e;
+@define-color red #E06C75;
+@define-color fg #D3C6AA;
+@define-color grey #6B7A72;
+@define-color grey-dim #3D4A44;
 
-* {
-  font-family: 'Fira Code Nerd Font', 'Fira Code';
-  font-size: 14px;
-  font-style: normal;
-  font-weight: bold;
-  min-height: 0;
-}
-
-window#waybar {
-  background: transparent;
-  margin: 0px;
-  padding: 0px;
-}
-
-window#waybar, #workspaces button, #clock, #network, #pulseaudio {
-  color: @foreground;
-}
-
-#workspaces, #custom-power, #clock, #battery, #pulseaudio, #network, #backlight, #tray, #window, #cpu, #memory {
-  background: @background;
-  padding: 0px 10px;
-  margin: 5px;
-  border: solid 2px @foreground;
-  border-radius: 20px;
-  font-weight: bold;
-  font-style: normal;
-}
-
-#custom-spotify-prev, #custom-spotify, #custom-spotify-next {
-  background: @background;
-  padding: 5px 5px; /* Match the padding of other modules */
-  margin: 5px 0px;
-  border-top: solid 2px @foreground;
-  border-bottom: solid 2px @foreground;
-  font-weight: bold;
-  font-style: normal;
-  font-size: 20px;
-}
-
-#custom-spotify-prev, #custom-spotify-next {
-  padding: 5px 10px; /* Match the padding of other modules */
-  font-size: 15px;
-}
-
-#custom-spotify-prev {
-  border-left: solid 2px @foreground;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-}
-
-#custom-spotify-next {
-  border-right: solid 2px @foreground;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
-
-#window {
-  margin: 5px 0;
-}
-
-#workspaces, #custom-power, #battery, #pulseaudio, #network, #backlight {
-  padding: 5px 10px;
-}
-
-#battery, #pulseaudio, #memory {
-  margin: 5px 0;
-}
-
-#battery {
-  padding: 0px 17px 0px 10px;
-}
-
-#custom-power {
-  padding: 0px 12px 0px 10px;
-}
-
-#custom-hover {
-  padding: 0;
-  margin: 0;
-  font-size: 2px;
-}
-
-#custom-launcher, #custom-browser, #custom-files, #custom-terminal, #custom-discord {
-  background: @background;
-  font-size: 30px;
-  padding: 0px 15px;
-  margin: 5px 0;
-  border-top: solid 2px @foreground;
-  border-bottom: solid 2px @foreground;
-}
-
-#custom-launcher {
-  border-radius: 8px 0 0 8px;
-  padding-left: 5px;
-  border-left: solid 2px @foreground;
-}
-
-#custom-files {
-  margin-right: 5px;
-  padding-right: 15px;
-  padding-left: 5px;
-  border-radius: 0 8px 8px 0;
-  border-right: solid 2px @foreground;
-}
-
-#workspaces button, #workspaces button.active {
-  padding: 0px 5px;
-  border-radius: 8px;
-}
-
-#workspaces button.active {
-  color: @background;
-  background-color: @foreground;
-}
-
-#workspaces button:hover {
-	background-color: @foreground;
-	color: @background;
-	border-radius: 16px;
-}
-
-#cpu, #memory {
-  padding: 0px 10px;
-}
-
-#disk {
-  background-color: @background;
-  border-radius: 16px;
-  padding: 0px 10px;
-  border: solid 2px @foreground;
-}
-
-#pulseaudio.muted {
-  color: grey;
-}
+* { font-family: 'Fira Code Nerd Font', monospace; font-size: 12px; font-weight: normal; min-height: 0; }
+window#waybar { background: @bg; border: 2px solid rgba(131, 192, 146, 0.2); border-radius: 12px; }
+#workspaces, #clock, #mpris, #tray, #custom-control-center { background: transparent; color: @grey; border: none; padding: 3px 8px; margin: 2px; border-radius: 10px; }
+#clock { color: @accent; font-weight: bold; letter-spacing: 1px; }
+#mpris { color: @accent; font-size: 11px; }
+#mpris.paused { color: @grey-dim; }
+#custom-control-center { color: @accent; font-size: 13px; padding: 3px 6px; margin-right: 4px; }
+#custom-control-center:hover { background: @accent-dim; }
+#workspaces button { color: @grey; padding: 2px 6px; margin: 0 2px; border-radius: 8px; font-size: 12px; background: rgba(61, 74, 68, 0.3); }
+#workspaces button.active, #workspaces button.focused { color: @bg-s; background: @accent; font-weight: bold; }
+#workspaces button:hover { color: @accent; background: @accent-dim; }
+#workspaces button.urgent { color: @red; }

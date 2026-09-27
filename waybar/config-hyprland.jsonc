@@ -1,0 +1,46 @@
+[
+  {
+    "position": "top",
+    "layer": "top",
+    "margin-top": 6,
+    "margin-bottom": 0,
+    "margin-left": 10,
+    "margin-right": 10,
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["mpris", "tray", "custom/control-center"],
+    "clock": {
+      "format": "{:%H:%M}",
+      "tooltip-format": "<big>{:%A, %B %d}</big>\n<tt><small>{calendar}</small></tt>",
+      "format-alt": "{:%a %d %b %Y}"
+    },
+    "hyprland/workspaces": {
+      "active-only": false,
+      "all-outputs": false,
+      "format": "{icon} {id}",
+      "format-icons": {
+        "1": "󰭹", "2": "󱓧", "3": "", "4": "",
+        "5": "", "6": "", "7": "󰊗",
+        "8": "", "9": "", "10": "󰊖",
+        "urgent": "", "active": "", "focused": "", "default": "·"
+      },
+      "sort-by-number": true,
+      "on-click": "activate",
+      "persistent-workspaces": { "*": 10 }
+    },
+    "mpris": {
+      "format": "  {title}",
+      "format-paused": "  {title}",
+      "max-length": 30,
+      "on-click": "~/.config/wm-common/toggle-control-center.sh",
+      "on-scroll-up": "playerctl next",
+      "on-scroll-down": "playerctl previous"
+    },
+    "tray": { "icon-size": 15, "spacing": 8 },
+    "custom/control-center": {
+      "format": "  ",
+      "on-click": "~/.config/wm-common/toggle-control-center.sh",
+      "tooltip": false
+    }
+  }
+]

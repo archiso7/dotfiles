@@ -3,6 +3,8 @@
 
 # But track these specific directories and their contents
 !/.gitignore
+!/.gitmodules
+!/README.md
 !/tmux/
 !/tmux/**
 !/tmux-sessionizer/

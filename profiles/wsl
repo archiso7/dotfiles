@@ -1,0 +1,8 @@
+# WSL on the Windows desktop. Terminal tooling only; Windows owns the GUI.
+# Management tooling: present on every machine.
+bin
+nvim
+profiles
+tmux
+tmux-sessionizer
+zsh

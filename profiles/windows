@@ -1,0 +1,6 @@
+# Native Windows (PowerShell). No zsh, no tmux.
+# Management tooling: present on every machine.
+bin
+nvim
+profiles
+windows

@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+# Apply a sparse-checkout profile, so a machine only materialises the configs
+# it can actually use.
+#
+# This repo has core.sparseCheckout enabled. Directories outside the active
+# profile stay tracked in the index with skip-worktree bits set, which is why
+# they neither appear on disk nor show up as deleted in `git status`.
+#
+#   dotfiles-profile            show the active profile and available ones
+#   dotfiles-profile macos      apply profiles/macos
+#   dotfiles-profile --detect   guess the right profile for this machine
+
+set -euo pipefail
+
+REPO="${DOTFILES_REPO:-$HOME/.config}"
+PROFILE_DIR="$REPO/profiles"
+SPARSE_FILE="$REPO/.git/info/sparse-checkout"
+
+die() { printf 'error: %s\n' "$1" >&2; exit 1; }
+
+detect() {
+  case "$(uname -s)" in
+    Darwin) printf 'macos\n' ;;
+    Linux)
+      if [[ -n "${WSL_DISTRO_NAME:-}" ]] || grep -qi microsoft /proc/version 2>/dev/null; then
+        printf 'wsl\n'
+      else
+        printf 'arch\n'
+      fi
+      ;;
+    MINGW*|MSYS*|CYGWIN*) printf 'windows\n' ;;
+    *) die "unrecognised platform: $(uname -s)" ;;
+  esac
+}
+
+# Recorded on apply. Several profiles share the same directory list (macos and
+# wsl are identical), so the name cannot be inferred from sparse-checkout.
+active() {
+  git -C "$REPO" config --get dotfiles.profile 2>/dev/null || printf '(unset)\n'
+}
+
+apply() {
+  local name="$1"
+  local file="$PROFILE_DIR/$name"
+  [[ -f "$file" ]] || die "no such profile: $name (try: $(ls -m "$PROFILE_DIR"))"
+
+  cd "$REPO"
+  git config core.sparseCheckout true
+
+  # Non-cone patterns: track root files, exclude all directories, then
+  # re-include the profile's directories.
+  {
+    printf '/*\n'
+    printf '!/*/\n'
+    grep -vE '^\s*(#|$)' "$file" | while read -r dir; do
+      printf '/%s/\n' "$dir"
+    done
+  } > "$SPARSE_FILE"
+
+  # Rewrites skip-worktree bits and materialises/removes directories.
+  git read-tree -mu HEAD
+  git config dotfiles.profile "$name"
+
+  printf 'profile: %s\n' "$name"
+  grep -vE '^\s*(#|$)' "$file" | sed 's/^/  /'
+}
+
+case "${1:-}" in
+  "")
+    printf 'active:    %s\n' "$(active)"
+    printf 'detected:  %s\n' "$(detect)"
+    printf 'available: %s\n' "$(ls -m "$PROFILE_DIR")"
+    ;;
+  --detect|-d) apply "$(detect)" ;;
+  --list|-l)   ls -1 "$PROFILE_DIR" ;;
+  -h|--help)   sed -n '/^# Apply/,/--detect/p' "$0" | sed 's/^# \?//' ;;
+  *)           apply "$1" ;;
+esac

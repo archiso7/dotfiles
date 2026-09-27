@@ -1,0 +1,8 @@
+# Work MacBook. No compositor, no Linux desktop.
+# Management tooling: present on every machine.
+bin
+nvim
+profiles
+tmux
+tmux-sessionizer
+zsh

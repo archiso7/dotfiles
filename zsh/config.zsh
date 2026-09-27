@@ -11,8 +11,11 @@
 #   highlight    fast-syntax-highlighting LAST; it wraps every ZLE widget
 #                defined up to this point, so anything loaded after it is
 #                not highlighted
-#   os           per-platform, keyed on `uname -s`
+#   os           per-platform, keyed on `uname -s`, plus os/wsl.zsh when the
+#                kernel reports WSL
 #   local        machine-specific and gitignored; overrides everything
+#
+# Native Windows does not run zsh at all; see windows/profile.ps1.
 
 ZSH_CONFIG_DIR="${${(%):-%x}:A:h}"
 

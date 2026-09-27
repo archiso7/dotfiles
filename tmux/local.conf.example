@@ -1,0 +1,11 @@
+# Machine-specific tmux config. Copy to local.conf, which is gitignored.
+#
+#   cp ~/.config/tmux/local.conf.example ~/.config/tmux/local.conf
+#
+# Sourced last, so it overrides everything.
+
+# Example: a different default shell on one machine
+# set -g default-command "/opt/homebrew/bin/zsh"
+
+# Example: extra popup bound to a host-specific tool
+# bind-key P display-popup -E -w 90% -h 85% "gh dash"

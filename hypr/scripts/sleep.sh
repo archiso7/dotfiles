@@ -1,3 +1,7 @@
-swayidle -w timeout 300 'swaylock --clock --indicator --screenshots --effect-scale 0.4 --effect-vignette 0.2:0.5 --effect-blur 4x2 --datestr "%a %e.%m.%Y" --timestr "%k:%M"' \
-            timeout 600 'systemctl suspend' \
-            before-sleep 'swaylock --clock --indicator --screenshots --effect-scale 0.4 --effect-vignette 0.2:0.5 --effect-blur 4x2 --datestr "%a %e.%m.%Y" --timestr "%k:%M"' &
+#!/bin/bash
+# Delegate to the single idle/lock script. Do not start a second swayidle here — that stacked two
+# swaylocks (unlock removed one; the next click hit the other).
+#
+# hyprland.conf runs ~/.config/wm-common/idle.sh via exec-once; start.sh also runs this script.
+# idle.sh begins with pkill swayidle, so calling it twice at login is safe (only one daemon remains).
+~/.config/wm-common/idle.sh

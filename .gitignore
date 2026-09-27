@@ -19,3 +19,6 @@
 !/wofi/**
 !/zsh/
 !/zsh/**
+
+# Machine-specific; never tracked
+/zsh/local.zsh

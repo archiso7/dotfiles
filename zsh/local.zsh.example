@@ -1,0 +1,32 @@
+# Machine-specific configuration. Copy to local.zsh, which is gitignored.
+#
+#   cp ~/.config/zsh/local.zsh.example ~/.config/zsh/local.zsh
+#
+# This is the right home for anything that is true of one machine and not the
+# others: work toolchains, private paths, credentials-adjacent env vars,
+# per-host overrides. It is sourced last, so it wins over everything else.
+#
+# Previously all of this lived directly in ~/.zshrc, which meant the single
+# most machine-specific file in the setup was the one file not tracked or
+# backed up anywhere.
+
+# --- Work laptop example -----------------------------------------------------
+# Shopify dev tooling. `dev.sh` must come before chruby.
+# [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
+# chruby 3.4.6
+# export RUBOCOP_OPTS="--config $HOME/.rubocop.yml"
+# export DEVT_ORG=devdegree
+
+# tec agent
+# [[ -x "$HOME/.local/state/tec/profiles/base/current/global/init" ]] && \
+#   eval "$("$HOME/.local/state/tec/profiles/base/current/global/init" zsh)"
+
+# pnpm
+# export PNPM_HOME="$HOME/Library/pnpm"
+# path=("$PNPM_HOME" $path)
+# export PATH
+
+# --- Personal machine example ------------------------------------------------
+# export GOPATH="$HOME/go"
+# path=("$GOPATH/bin" $path)
+# export PATH

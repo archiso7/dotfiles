@@ -1,0 +1,15 @@
+# ~/.zshrc — thin stub. Install with:
+#
+#   ln -sf ~/.config/zsh/zshrc ~/.zshrc
+#
+# Real configuration lives in ~/.config/zsh/. Machine-specific settings go in
+# ~/.config/zsh/local.zsh (gitignored), not here — keeping this file a stub is
+# what makes the shell setup reproducible across machines.
+
+# powerlevel10k instant prompt. Must stay at the very top: it has to run
+# before anything writes to stdout, or p10k warns and disables itself.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+source "$HOME/.config/zsh/config.zsh"

@@ -13,3 +13,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 source "$HOME/.config/zsh/config.zsh"
+
+# Added by tec agent
+[[ -x /Users/liamwest/.local/state/tec/profiles/base/current/global/init ]] && eval "$(/Users/liamwest/.local/state/tec/profiles/base/current/global/init zsh)"

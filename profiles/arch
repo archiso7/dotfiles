@@ -1,12 +1,16 @@
 # Arch personal laptop. Full Wayland desktop.
 # Management tooling: present on every machine.
 bin
+fuzzel
 hypr
 kitty
 nvim
 profiles
+rice
 tmux
 tmux-sessionizer
 waybar
+wm-common
 wofi
+wpg
 zsh

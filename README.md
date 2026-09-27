@@ -330,8 +330,17 @@ as a dirty diff.
 
 `~/.config/rice/` (the theme switcher) and `~/.config/wm-common/` (scripts bound
 to Hyprland keys) are referenced by the Arch config but tracked in **no**
-branch. They exist only on the Arch laptop. Recover them before wiping it:
+branch. They exist only on the Arch laptop. `rice/`, `wm-common/`, `fuzzel/`
+and `wpg/` are already whitelisted in `.gitignore` and listed in
+`profiles/arch`, so recovery on that machine is just:
 
 ```sh
-cd ~/.config && git add -f rice wm-common fuzzel wpg && git commit && git push
+cd ~/.config
+git fetch origin && git checkout main && git pull
+git add rice wm-common fuzzel wpg
+git commit -m "recover Arch desktop scripts"
+git push origin main
+bin/dotfiles-profile arch
 ```
+
+Do this **before** wiping the laptop.

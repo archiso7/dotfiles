@@ -25,6 +25,14 @@
 !/waybar/**
 !/wofi/
 !/wofi/**
+!/rice/
+!/rice/**
+!/wm-common/
+!/wm-common/**
+!/fuzzel/
+!/fuzzel/**
+!/wpg/
+!/wpg/**
 !/zsh/
 !/zsh/**
 
